@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">JuniorTask</string>
+    <string name="country">Country:</string>
+    <string name="distance">Distance:</string>
+    <string name="incorrect_user_or_pass">Username or password incorrect</string>
+    <string name="no_internet">No internet</string>
+    <string name="success">Success</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="see_details">See Details</string>
+    <string name="token" translatable="false">TOKEN</string>
+    <string name="servers">Servers</string>
+    <string name="details">Details</string>
+</resources>

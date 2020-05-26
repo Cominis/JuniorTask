@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="server"
+            type="com.dmt.juniortask.domain.Server" />
+        <variable
+            name="clickListener"
+            type="com.dmt.juniortask.ui.ServerListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item_constraint_layout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:onClick="@{()-> clickListener.onClick(server.id)}">
+
+        <TextView
+            android:id="@+id/item_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:text="@{server.country}"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/arrow_right"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/item_text_view"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/see_details" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

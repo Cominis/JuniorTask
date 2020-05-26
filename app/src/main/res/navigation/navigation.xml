@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/serversFragment">
+
+    <fragment
+        android:id="@+id/serversFragment"
+        android:name="com.dmt.juniortask.ui.ServersFragment"
+        android:label="ServersFragment"
+        tools:layout="@layout/fragment_servers">
+        <action
+            android:id="@+id/action_serversFragment_to_serverDetailFragment"
+            app:destination="@id/serverDetailFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/serverDetailFragment"
+        android:name="com.dmt.juniortask.ui.ServerDetailFragment"
+        android:label="ServerDetailFragment"
+        tools:layout="@layout/fragment_server_details">
+        <argument
+            android:name="serverId"
+            app:argType="long" />
+    </fragment>
+</navigation>

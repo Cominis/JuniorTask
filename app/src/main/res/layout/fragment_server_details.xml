@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.dmt.juniortask.viewmodels.ServerDetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/country_label"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="@string/country"
+            app:layout_constraintBottom_toTopOf="@+id/country_text_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/country_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:textSize="24sp"
+            android:text="@{viewModel.server.country}"
+            app:layout_constraintBottom_toTopOf="@+id/distance_label"
+            app:layout_constraintStart_toStartOf="@+id/country_label"
+            app:layout_constraintTop_toBottomOf="@+id/country_label" />
+
+        <TextView
+            android:id="@+id/distance_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/distance"
+            app:layout_constraintBottom_toTopOf="@+id/distance_text_view"
+            app:layout_constraintStart_toStartOf="@+id/country_text_view"
+            app:layout_constraintTop_toBottomOf="@+id/country_text_view" />
+
+        <TextView
+            android:id="@+id/distance_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:text="@{Long.toString(viewModel.server.distance)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/distance_label"
+            app:layout_constraintTop_toBottomOf="@+id/distance_label" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
