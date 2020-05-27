@@ -41,8 +41,7 @@ class LoginActivity  : DaggerAppCompatActivity() {
 
         viewModel.navigateToServers.observe(this, Observer { token ->
             token?.let{
-                //Not sure where the token should be saved,
-                // so it will live as long as MainActivity lives
+
                 val intent = Intent(this, MainActivity::class.java).apply {
                     putExtra(resources.getString(R.string.token), token)
                 }

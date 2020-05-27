@@ -18,7 +18,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginBottom="16dp"
-            android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.INVISIBLE}"
+            visibleGone="@{viewModel.isLoading}"
             app:layout_constraintBottom_toTopOf="@+id/login_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

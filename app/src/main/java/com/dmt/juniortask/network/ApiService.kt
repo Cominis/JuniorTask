@@ -2,7 +2,6 @@ package com.dmt.juniortask.network
 
 import retrofit2.http.*
 
-//todo make wrapper for requests as guidelines suggest?
 interface ApiService {
 
     @Headers("Accept: application/json")

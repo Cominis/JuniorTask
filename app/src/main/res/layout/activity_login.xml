@@ -17,7 +17,7 @@
             android:id="@+id/indeterminateBar"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.INVISIBLE}"
+            visibleGone="@{viewModel.isLoading}"
             app:layout_constraintBottom_toTopOf="@+id/username_edit_text"
             app:layout_constraintEnd_toEndOf="@+id/username_edit_text"
             app:layout_constraintStart_toStartOf="@+id/username_edit_text"

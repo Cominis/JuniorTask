@@ -16,7 +16,7 @@
         <ProgressBar
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.INVISIBLE}"
+            visibleGone="@{viewModel.isLoading}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
