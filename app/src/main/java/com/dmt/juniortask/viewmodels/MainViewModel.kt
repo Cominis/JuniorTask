@@ -13,6 +13,4 @@ class MainViewModel @Inject constructor() : ViewModel() {
     fun setTitle(title: String) {
         _title.value = title
     }
-
-    var token : String = ""
 }

@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.dmt.juniortask.AppApplication
 import com.dmt.juniortask.R
 import com.dmt.juniortask.databinding.FragmentServersBinding
 import com.dmt.juniortask.repository.AppRepository
@@ -24,9 +25,6 @@ class ServersFragment : DaggerFragment() {
     @Inject
     lateinit var repo: AppRepository
 
-    private lateinit var mainViewModel : MainViewModel
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,8 +34,9 @@ class ServersFragment : DaggerFragment() {
             inflater, R.layout.fragment_servers, container, false
         )
 
-        mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
-        val token = mainViewModel.token
+        ViewModelProvider(requireActivity()).get(MainViewModel::class.java).setTitle(resources.getString(R.string.servers))
+
+        val token = (requireActivity().application as AppApplication).userManager.token
         val factory = ServersViewModelFactory(repo, token)
         viewModel = ViewModelProvider(this, factory).get(ServersViewModel::class.java)
 
@@ -58,8 +57,6 @@ class ServersFragment : DaggerFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        mainViewModel.setTitle(resources.getString(R.string.servers))
 
         viewModel.navigateToServerDetails.observe(viewLifecycleOwner, Observer { serverId ->
             serverId?.let {

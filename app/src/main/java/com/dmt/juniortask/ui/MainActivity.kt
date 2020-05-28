@@ -31,7 +31,6 @@ class MainActivity : DaggerAppCompatActivity() {
         })
 
         userManager = (application as AppApplication).userManager
-            viewModel.token = userManager.token
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
