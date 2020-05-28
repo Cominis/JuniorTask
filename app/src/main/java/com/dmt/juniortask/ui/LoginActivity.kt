@@ -29,7 +29,8 @@ class LoginActivity  : DaggerAppCompatActivity() {
             DataBindingUtil.setContentView<ActivityLoginBinding>(this, R.layout.activity_login)
 
         val userManager = (application as AppApplication).userManager
-        if (!userManager.isUserLoggedIn()) {
+        if (userManager.isUserLoggedIn()) {
+            userManager.setIsAlreadyLoggedIn()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()

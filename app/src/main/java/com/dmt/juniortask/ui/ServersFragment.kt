@@ -36,8 +36,8 @@ class ServersFragment : DaggerFragment() {
 
         ViewModelProvider(requireActivity()).get(MainViewModel::class.java).setTitle(resources.getString(R.string.servers))
 
-        val token = (requireActivity().application as AppApplication).userManager.token
-        val factory = ServersViewModelFactory(repo, token)
+        val userManager = (requireActivity().application as AppApplication).userManager
+        val factory = ServersViewModelFactory(repo, userManager.token, userManager.isAlreadyLoggedIn)
         viewModel = ViewModelProvider(this, factory).get(ServersViewModel::class.java)
 
         val adapter = ServersAdapter(ServerListener {serverId ->

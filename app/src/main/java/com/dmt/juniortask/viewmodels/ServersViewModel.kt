@@ -11,7 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class ServersViewModel (private val repo: AppRepository, private val token: String) : ViewModel() {
+class ServersViewModel (private val repo: AppRepository, private val token: String, private val isAlreadyLoggedIn: Boolean) : ViewModel() {
 
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main )
@@ -39,7 +39,7 @@ class ServersViewModel (private val repo: AppRepository, private val token: Stri
 
     init {
         coroutineScope.launch {
-            if(hasInternet()){
+            if(!isAlreadyLoggedIn && hasInternet()){
                 repo.refreshServers(token)
             }
             _servers.value = repo.getServers()
