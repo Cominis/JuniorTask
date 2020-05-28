@@ -23,7 +23,6 @@ class LoginActivity  : DaggerAppCompatActivity() {
     @Inject
     lateinit var repo: AppRepository
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding =
@@ -53,7 +52,8 @@ class LoginActivity  : DaggerAppCompatActivity() {
                         startActivity(intent)
                         finish()
                     }
-                    LoginError -> {binding.errorMsgTextView.text = resources.getString(R.string.error)}
+                    LoginNoInternet -> {binding.errorMsgTextView.text = resources.getString(R.string.no_internet)}
+                    LoginError -> {binding.errorMsgTextView.text = resources.getString(R.string.incorrect_user_or_pass)}
                 }
             })
         }
@@ -63,4 +63,5 @@ class LoginActivity  : DaggerAppCompatActivity() {
 
 sealed class LoginViewState
 object LoginSuccess : LoginViewState()
+object LoginNoInternet : LoginViewState()
 object LoginError : LoginViewState()

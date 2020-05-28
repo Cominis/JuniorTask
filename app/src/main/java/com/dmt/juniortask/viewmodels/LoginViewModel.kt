@@ -7,6 +7,7 @@ import com.dmt.juniortask.network.UserProperty
 import com.dmt.juniortask.repository.AppRepository
 import com.dmt.juniortask.repository.UserManager
 import com.dmt.juniortask.ui.LoginError
+import com.dmt.juniortask.ui.LoginNoInternet
 import com.dmt.juniortask.ui.LoginSuccess
 import com.dmt.juniortask.ui.LoginViewState
 import com.dmt.juniortask.utils.hasInternet
@@ -47,14 +48,13 @@ class LoginViewModel @Inject constructor(private val repo: AppRepository, privat
             if(hasInternet()) {
                 try {
                     val tokenProp =  repo.login(user)
-
                     userManager.loginUser(tokenProp.token)
                     _loginState.value = LoginSuccess
                 } catch (e: Exception) {
                     _loginState.value = LoginError
                 }
             } else {
-                _loginState.value = LoginError
+                _loginState.value = LoginNoInternet
             }
             _isLoading.value = false
         }
