@@ -1,5 +1,6 @@
 package com.dmt.juniortask.di
 
+import android.content.Context
 import com.dmt.juniortask.AppApplication
 import dagger.BindsInstance
 import dagger.Component
@@ -13,7 +14,8 @@ import javax.inject.Singleton
     AndroidSupportInjectionModule::class,
     ActivityBuildersModule::class,
     ViewModelFactoryModule::class,
-    ApplicationModule::class
+    ApplicationModule::class,
+    StorageModule::class
 ])
 interface ApplicationComponent : AndroidInjector<AppApplication> {
     override fun inject(application: AppApplication)
@@ -22,7 +24,8 @@ interface ApplicationComponent : AndroidInjector<AppApplication> {
     interface Builder {
         @BindsInstance
         fun application(application: AppApplication): Builder
-
+        @BindsInstance
+        fun context(context: Context): Builder
         fun build(): ApplicationComponent
     }
 }

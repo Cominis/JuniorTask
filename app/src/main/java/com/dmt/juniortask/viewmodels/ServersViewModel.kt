@@ -23,7 +23,7 @@ class ServersViewModel (private val repo: AppRepository, private val token: Stri
     //var servers : LiveData<List<Server>> = repo.servers
     private val _servers = MutableLiveData<List<Server>>()
     val servers : LiveData<List<Server>>
-    get() = _servers
+        get() = _servers
 
     fun onServerItemClicked(id: Long){
         _navigateToServerDetails.value = id
