@@ -42,6 +42,6 @@ class ServerDetailFragment : DaggerFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        ViewModelProvider(requireActivity()).get(MainViewModel::class.java).setTitle(resources.getString(R.string.details))
+        requireActivity().title = resources.getString(R.string.details)
     }
 }

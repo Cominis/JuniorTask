@@ -35,9 +35,10 @@ class LoginViewModel @Inject constructor(private val repo: AppRepository, privat
         get() = _isLoading
 
     fun login() {
-        val username = username.value!!
-        val password = password.value!!
-        if(username.isBlank() || password.isBlank()) {
+        val username = username.value
+        val password = password.value
+
+        if(username.isNullOrBlank() || password.isNullOrBlank()) {
             _loginState.value = LoginError
             return
         }

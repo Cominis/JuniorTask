@@ -1,5 +1,6 @@
 package com.dmt.juniortask.ui
 
+import android.icu.text.CaseMap
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -34,7 +35,7 @@ class ServersFragment : DaggerFragment() {
             inflater, R.layout.fragment_servers, container, false
         )
 
-        ViewModelProvider(requireActivity()).get(MainViewModel::class.java).setTitle(resources.getString(R.string.servers))
+        requireActivity().title = resources.getString(R.string.servers)
 
         val userManager = (requireActivity().application as AppApplication).userManager
         val factory = ServersViewModelFactory(repo, userManager.token, userManager.isAlreadyLoggedIn)

@@ -24,13 +24,14 @@ class MainActivity : DaggerAppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val viewModel = ViewModelProvider(this, factory).get(MainViewModel::class.java)
-
-        viewModel.title.observe(this, Observer {
-            title = it
-        })
-
         userManager = (application as AppApplication).userManager
+        if (!userManager.isUserLoggedIn()) {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        } else {
+            userManager.setIsAlreadyLoggedIn()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

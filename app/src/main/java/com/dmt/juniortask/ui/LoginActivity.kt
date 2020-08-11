@@ -28,36 +28,29 @@ class LoginActivity  : DaggerAppCompatActivity() {
         val binding =
             DataBindingUtil.setContentView<ActivityLoginBinding>(this, R.layout.activity_login)
 
-        val userManager = (application as AppApplication).userManager
-        if (userManager.isUserLoggedIn()) {
-            userManager.setIsAlreadyLoggedIn()
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
-        } else {
-            title = resources.getString(R.string.login)
-            val viewModel = ViewModelProvider(this, factory).get(LoginViewModel::class.java)
+        title = resources.getString(R.string.login)
+        val viewModel = ViewModelProvider(this, factory).get(LoginViewModel::class.java)
 
-            // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
-            binding.lifecycleOwner = this
-            binding.viewModel = viewModel
+        // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
 
-            binding.loginButton.setOnClickListener {
-                viewModel.login()
-            }
-
-            viewModel.loginState.observe(this, Observer { state ->
-                when(state) {
-                    LoginSuccess -> {
-                        val intent = Intent(this, MainActivity::class.java)
-                        startActivity(intent)
-                        finish()
-                    }
-                    LoginNoInternet -> {binding.errorMsgTextView.text = resources.getString(R.string.no_internet)}
-                    LoginError -> {binding.errorMsgTextView.text = resources.getString(R.string.incorrect_user_or_pass)}
-                }
-            })
+        binding.loginButton.setOnClickListener {
+            viewModel.login()
         }
+
+        viewModel.loginState.observe(this, Observer { state ->
+            when(state) {
+                LoginSuccess -> {
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+                LoginNoInternet -> {binding.errorMsgTextView.text = resources.getString(R.string.no_internet)}
+                LoginError -> {binding.errorMsgTextView.text = resources.getString(R.string.incorrect_user_or_pass)}
+            }
+        })
+
     }
 
 }

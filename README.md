@@ -1,2 +1,2 @@
-App made with Android Studio only.
+App made with Android Studio for 'Junior Android Developer' position.
 # JuniorTask
